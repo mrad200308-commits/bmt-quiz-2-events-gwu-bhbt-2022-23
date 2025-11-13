@@ -1,11 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechCon 2025 Event Schedule</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    const storedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  </script>
 </head>
 <body>
-    <h1>tytgt</h1>
+ 
+  <header>
+    <div class="header-content">
+      <h1>TechCon 2025 Event Schedule</h1>
+      <button id="theme-toggle" aria-label="Toggle dark and light mode">
+        <span class="sun-icon">☀</span>
+        <span class="moon-icon">🌙</span>
+      </button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#event-container">Events</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header> 
+
+  <main>
+    <section id="event-container">
+    </section>
+
+    <section id="speakers">
+      <h2>Featured Speakers</h2>
+      <p>Meet top innovators sharing insights on the latest in technology.</p>
+    </section>
+
+    <section id="about">
+      <h2>About TechCon 2025</h2>
+      <p>TechCon 2025 brings together visionaries, developers, and entrepreneurs to explore cutting-edge technologies shaping our future.</p>
+    </section>
+
+    <p id="no-results" class="hidden" aria-live="polite" role="status">
+      No events match your current search or filter criteria.
+    </p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 TechCon Conference. All Rights Reserved. Developed by [Your Name].</p>
+  </footer>
+
+  <script>
+    const events = [
+      {
+        title: "AI Innovations in 2025",
+        description: "Explore how artificial intelligence is revolutionizing industries.",
+        time: "August 09, 12:00 AM",
+        image: "c:\Users\DILUKSHAN\OneDrive\Desktop\Ai.jpeg"
+      },
+      {
+        title: "The Future of Web Development",
+        description: "Dive into modern frameworks and next-gen web tools.",
+        time: "August 10, 1:00 PM",
+        image: "c:\Users\DILUKSHAN\OneDrive\Desktop\webdevelopment.jpeg"
+      },
+      {
+        title: "Cybersecurity in the Cloud Era",
+        description: "Learn how to protect data in the rapidly evolving cloud landscape.",
+        time: "August  13, 11:00 AM",
+        image: "c:\Users\DILUKSHAN\OneDrive\Desktop\cybersecurity.webp"
+      },
+      {
+        title: "Quantum Computing: The Next Frontier",
+        description: "Understand the impact of quantum tech on computation.",
+        time: "August  14, 9:00 AM",
+        image: "c:\Users\DILUKSHAN\OneDrive\Desktop\images.jpeg"
+      },
+      {
+        title: "Programming Workshop",
+        description: "Join fellow developers coding together in an interactive hands-on session.",
+        time: "August  14, 2:00 PM",
+        image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        title: "Networking Event",
+        description: "Connect with professionals, share ideas, and build valuable industry relationships.",
+        time: "August  15, 5:00 PM",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80"
+      }
+    ];
+    function renderEvents() {
+      const container = document.getElementById("event-container");
+      container.innerHTML = "";
+
+      events.forEach(event => {
+             const card = document.createElement("div");
+        card.classList.add("event-card");
+
+        const img = document.createElement("img");
+        img.src = event.image;
+        img.alt = event.title;
+
+        const title = document.createElement("h2");
+        title.textContent = event.title;
+
+        const desc = document.createElement("p");
+        desc.textContent = event.description;
+
+        const time = document.createElement("p");
+        time.classList.add("time");
+        time.textContent = event.time;
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(desc);
+        card.appendChild(time);
+
+        container.appendChild(card);
+      });
+    }
+    document.addEventListener("DOMContentLoaded", renderEvents);
+  </script>
 </body>
 </html>
