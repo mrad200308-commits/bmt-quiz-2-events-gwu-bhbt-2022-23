@@ -146,4 +146,13 @@ const events = [
         description: "Join us as we celebrate the best of the conference and announce the hackathon winners.",
         image: "images/awards.jpg"
     }
+    const button = document.getElementById("toggleBtn");
+const body = document.body;
+
+button.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+});
+
+
+
 ];
